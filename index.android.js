@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry,Text,Button,View} from 'react-native';
+import {AppRegistry,Text,Button,View,StyleSheet,Image} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 
 class IntroScreen extends React.Component {
@@ -7,10 +7,10 @@ class IntroScreen extends React.Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
-      <View>
+      <View style={styles.main}>
         <Button
           onPress={() => navigate('Main')}
-          title="Press To Start"
+          title="Naciśnij by rozpocząć"
         />
       </View>
     );
@@ -22,18 +22,22 @@ class MainScreen extends React.Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
-      <View>
+      <View style={styles.main}>
       <Button
         onPress={() => navigate('Data')}
-        title="Personal Data"
+        title="Dane Osobowe"
       />
       <Button
-        onPress={() => navigate('Skills')}
-        title="Skills"
+        onPress={() => navigate('Edu')}
+        title="Wykształcenie"
       />
       <Button
         onPress={() => navigate('Exp')}
-        title="Working Experience"
+        title="Doświadczenie"
+      />
+      <Button
+        onPress={() => navigate('Skills')}
+        title="Umiejętności"
       />
       </View>
     );
@@ -41,45 +45,97 @@ class MainScreen extends React.Component {
 }
 
 class DataScreen extends React.Component {
-  static navigationOptions = {title: 'Personal Data'};
+  static navigationOptions = {title: 'Dane Osobowe'};
   render() {
     return (
       <View>
-        <Text>There should be some data</Text>
+        <Text style={{fontWeight: 'normal'}}>
+          Telefon<Text style={{fontWeight: 'bold'}}>{"\n"}796533378</Text>
+        </Text>
+        <Text style={{fontWeight: 'normal'}}>
+          Mail<Text style={{fontWeight: 'bold'}}>{"\n"}pawel.czyszczon997@gmail.com</Text>
+        </Text>
+        <Text style={{fontWeight: 'normal'}}>
+          Adres<Text style={{fontWeight: 'bold'}}>{"\n"}Tadeusza Kościuszki 198/26{"\n"}50-437 Wrocław</Text>
+        </Text>
       </View>
     );
   }
 }
 
 class SkillsScreen extends React.Component {
-  static navigationOptions = {title: 'Skills'};
+  static navigationOptions = {title: 'Umiejętności'};
   render() {
     return (
       <View>
-        <Text>There should be some skills</Text>
+        <Text style={{fontWeight: 'normal'}}>
+          Znajomość<Text style={{fontWeight: 'bold'}}>{"\n"}Python, C z elementami C++</Text>
+        </Text>
+        <Text style={{fontWeight: 'normal'}}>
+          Podstawowa Znajomość<Text style={{fontWeight: 'bold'}}>{"\n"}HTML5, JavaScript, jQuery, CSS, SFML, React-Native</Text>
+        </Text>
+        <Text style={{fontWeight: 'normal'}}>
+          Podstawowa Wiedza z Zakresu<Text style={{fontWeight: 'bold'}}>{"\n"}Scrum, git VC</Text>
+        </Text>
+        <Text style={{fontWeight: 'normal'}}>
+          Pozostałe<Text style={{fontWeight: 'bold'}}>{"\n"}Angielski B2</Text>
+        </Text>
       </View>
     );
   }
 }
 
 class ExperienceScreen extends React.Component {
-  static navigationOptions = {title: 'Working Experience'};
+  static navigationOptions = {title: 'Doświadczenie'};
   render() {
     return (
       <View>
-        <Text>There should be some work info</Text>
+        <Text style={{fontWeight: 'normal'}}>
+          2014 <Text style={{fontWeight: 'bold'}}>{"\n"}Członek Komisji Wyborczej</Text>
+        </Text>
+        <Text style={{fontWeight: 'normal'}}>
+          2015<Text style={{fontWeight: 'bold'}}>{"\n"}Korepetytor z Matematyki</Text>
+        </Text>
+        <Text style={{fontWeight: 'normal'}}>
+          2015 <Text style={{fontWeight: 'bold'}}>{"\n"}Wakacyjna Praca w Księgarnii</Text>
+        </Text>
       </View>
     );
   }
 }
 
+class EducationScreen extends React.Component {
+  static navigationOptions = {title: 'Wykształcenie'};
+  render() {
+    return (
+      <View>
+        <Text style={{fontWeight: 'normal'}}>
+          2012-2015 <Text style={{fontWeight: 'bold'}}>{"\n"}Liceum Ogólnokształcące nr 1 w Legnicy</Text>
+        </Text>
+        <Text style={{fontWeight: 'normal'}}>
+          2016-teraz <Text style={{fontWeight: 'bold'}}>{"\n"}Uniwersytet Wrocławski{"\n"}Wydział Fizyki i Astronomii{"\n"}Informatyka Stosowana i Systemy Pomiarowe</Text>
+        </Text>
+      </View>
+    );
+  }
+}
 
-const CV = StackNavigator({
+const curriculum = StackNavigator({
   Intro: {screen: IntroScreen},
   Main: {screen: MainScreen},
   Skills: {screen: SkillsScreen},
   Data: {screen: DataScreen},
+  Edu: {screen: EducationScreen},
   Exp: {screen: ExperienceScreen},
 });
 
-AppRegistry.registerComponent('CV', () => CV);
+const styles = StyleSheet.create({
+
+  main: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+  },
+});
+
+AppRegistry.registerComponent('curriculum', () => curriculum);
