@@ -1,18 +1,20 @@
 import React, {Component} from 'react';
-import {AppRegistry,Text,Button,View,StyleSheet,Image} from 'react-native';
+import {AppRegistry,Text,View,StyleSheet,Image} from 'react-native';
 import {StackNavigator} from 'react-navigation';
+import Button from 'apsl-react-native-button'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 class IntroScreen extends React.Component {
   static navigationOptions = {header: null };
   render() {
     const {navigate} = this.props.navigation;
     return (
-      <View style={styles.main}>
         <Button
-          onPress={() => navigate('Main')}
-          title="Naciśnij by rozpocząć"
-        />
-      </View>
+        onPress={() => navigate('Main')}
+        style={styles.startButton}
+        textStyle={{fontSize: 20}}>
+          <Text> <Icon name="bank"/> Start </Text>
+        </Button>
     );
   }
 }
@@ -22,23 +24,19 @@ class MainScreen extends React.Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
-      <View style={styles.main}>
-      <Button
-        onPress={() => navigate('Data')}
-        title="Dane Osobowe"
-      />
-      <Button
-        onPress={() => navigate('Edu')}
-        title="Wykształcenie"
-      />
-      <Button
-        onPress={() => navigate('Exp')}
-        title="Doświadczenie"
-      />
-      <Button
-        onPress={() => navigate('Skills')}
-        title="Umiejętności"
-      />
+      <View style={styles.mainButtons}>
+      <Button onPress={() => navigate('Data')}>
+        <Text> <Icon name="id-card"/> Dane Osobowe </Text>
+      </Button>
+      <Button onPress={() => navigate('Edu')}>
+        <Text> <Icon name="mortar-board"/> Wykształcenie </Text>
+      </Button>
+      <Button onPress={() => navigate('Exp')}>
+        <Text> <Icon name="suitcase"/> Doświadczenie </Text>
+      </Button>
+      <Button onPress={() => navigate('Skills')}>
+        <Text> <Icon name="microchip"/> Umiejętności </Text>
+      </Button>
       </View>
     );
   }
@@ -120,7 +118,7 @@ class EducationScreen extends React.Component {
   }
 }
 
-const curriculum = StackNavigator({
+const CV = StackNavigator({
   Intro: {screen: IntroScreen},
   Main: {screen: MainScreen},
   Skills: {screen: SkillsScreen},
@@ -130,12 +128,17 @@ const curriculum = StackNavigator({
 });
 
 const styles = StyleSheet.create({
-
-  main: {
+  container: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-around',
+    width: null,
+    height: null,
+  },
+  startButton: {
+    margin: 15,
+  },
+  mainButtons: {
+    margin: 15,
   },
 });
 
-AppRegistry.registerComponent('curriculum', () => curriculum);
+AppRegistry.registerComponent('CV', () => CV);
