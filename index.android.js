@@ -164,17 +164,6 @@ class EducationScreen extends React.Component{
     }
   }
 
-class SettingsScreen extends React.Component{
-  static navigationOptions = {title: 'Ustawienia'};
-  render() {
-    return (
-      <View>
-        <Text> adagaga </Text>
-      </View>
-    );
-  }
-}
-
 const CV = StackNavigator({
   Intro: {screen: IntroScreen},
   Main: {screen: MainScreen},
@@ -182,7 +171,6 @@ const CV = StackNavigator({
   Data: {screen: DataScreen},
   Edu: {screen: EducationScreen},
   Exp: {screen: ExperienceScreen},
-  Sett: {screen: SettingsScreen},
 });
 
 AppRegistry.registerComponent('CV', () => CV);
