@@ -1,4 +1,7 @@
 module.exports = {
+  NAME: {
+    name: 'Paweł',
+    sname:'Czyszczoń'},
   PERSONAL: {
     phone: '796533378',
     mail: 'pawel.czyszczon997@gmail.com',
