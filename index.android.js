@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {AppRegistry,Text,View,Image,TextInput,linking} from 'react-native';
+import {AppRegistry,Text,View,Image,TextInput,
+        WebView, Linking} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import Button from 'apsl-react-native-button'
 import Icon from 'react-native-vector-icons/FontAwesome';
-import ActionButton from 'react-native-action-button';
+import Communications from 'react-native-communications';
 
 import data from './res/res.js';
 import * as styles from './res/styles.js';
@@ -59,7 +60,12 @@ class MainScreen extends React.Component {
         <Text style={styles.textM}> <Icon name="microchip" size={25}/> Umiejętności </Text>
       </Button>
       <Button
-        onPress={() => openURL("https://facebook.github.io/react-native/docs/linking.html")}
+        onPress={() => Communications.web(data.GITHUB.url)}
+        style={styles.menuButtons}>
+        <Text style={styles.textM}> <Icon name="github" size={25}/> Github</Text>
+      </Button>
+      <Button
+        onPress={() => navigate('Sett')}
         style={styles.settingsButton}>
         <Text><Icon name="cogs" size={35}/></Text>
       </Button>
@@ -103,32 +109,34 @@ class SkillsScreen extends React.Component{
     static navigationOptions = {title: 'Umiejętności'};
     render() {
       return (
-        <View>
-          <Text style={{fontWeight: 'normal'}}>
+        <Image
+         source={require('./res/BG.png')}
+         style={styles.MenuContainer}>
+          <Text style={styles.textH}>
             Znajomość
-            <Text style={{fontWeight: 'bold'}}>
+            <Text style={styles.textD}>
               {"\n"}{data.SKILLS.know}
             </Text>
           </Text>
-          <Text style={{fontWeight: 'normal'}}>
+          <Text style={styles.textH}>
             Podstawowa Znajomość
-            <Text style={{fontWeight: 'bold'}}>
+            <Text style={styles.textD}>
               {"\n"}{data.SKILLS.basic}
             </Text>
           </Text>
-          <Text style={{fontWeight: 'normal'}}>
+          <Text style={styles.textH}>
             Podstawowa Wiedza z Zakresu
-            <Text style={{fontWeight: 'bold'}}>
+            <Text style={styles.textD}>
               {"\n"}{data.SKILLS.rlybasic}
             </Text>
           </Text>
-          <Text style={{fontWeight: 'normal'}}>
+          <Text style={styles.textH}>
             Pozostałe
-            <Text style={{fontWeight: 'bold'}}>
+            <Text style={styles.textD}>
               {"\n"}{data.SKILLS.rest}
             </Text>
           </Text>
-        </View>
+        </Image>
       );
     }
   }
@@ -137,26 +145,28 @@ class ExperienceScreen extends React.Component{
     static navigationOptions = {title: 'Doświadczenie'};
     render() {
       return (
-        <View>
-          <Text style={{fontWeight: 'normal'}}>
+        <Image
+         source={require('./res/BG.png')}
+         style={styles.MenuContainer}>
+          <Text style={styles.textH}>
             {data.EXPERIENCE.wda1}
-            <Text style={{fontWeight: 'bold'}}>
+            <Text style={styles.textD}>
               {"\n"}{data.EXPERIENCE.w1}
             </Text>
           </Text>
-          <Text style={{fontWeight: 'normal'}}>
+          <Text style={styles.textH}>
             {data.EXPERIENCE.wda2}
-            <Text style={{fontWeight: 'bold'}}>
+            <Text style={styles.textD}>
               {"\n"}{data.EXPERIENCE.w2}
             </Text>
           </Text>
-          <Text style={{fontWeight: 'normal'}}>
+          <Text style={styles.textH}>
             {data.EXPERIENCE.wda3}
-            <Text style={{fontWeight: 'bold'}}>
+            <Text style={styles.textD}>
               {"\n"}{data.EXPERIENCE.w3}
             </Text>
           </Text>
-        </View>
+        </Image>
       );
     }
   }
@@ -165,22 +175,24 @@ class EducationScreen extends React.Component{
     static navigationOptions = {title: 'Wykształcenie'};
     render() {
       return (
-        <View>
-          <Text style={{fontWeight: 'normal'}}>
+        <Image
+         source={require('./res/BG.png')}
+         style={styles.MenuContainer}>
+          <Text  style={styles.textH}>
             {data.EDUCATION.highDate}
-              <Text style={{fontWeight: 'bold'}}>
+              <Text style={styles.textD}>
                 {"\n"}{data.EDUCATION.high}
               </Text>
           </Text>
-          <Text style={{fontWeight: 'normal'}}>
+          <Text  style={styles.textH}>
             {data.EDUCATION.uniDate}
-              <Text style={{fontWeight: 'bold'}}>
+              <Text style={styles.textD}>
                 {"\n"}{data.EDUCATION.uni}{"\n"}
                 {data.EDUCATION.dep}{"\n"}
                 {data.EDUCATION.field}
               </Text>
           </Text>
-        </View>
+        </Image>
       );
     }
   }
@@ -190,13 +202,13 @@ class SettingsScreen extends React.Component{
   render() {
     return (
       <View>
-        <Text> adagaga </Text>
+            <Text>Settings under constructions...</Text>
       </View>
     );
   }
 }
 
-const CV = StackNavigator({
+const CurriculumVitae = StackNavigator({
   Intro: {screen: IntroScreen},
   Main: {screen: MainScreen},
   Skills: {screen: SkillsScreen},
@@ -206,4 +218,4 @@ const CV = StackNavigator({
   Sett: {screen: SettingsScreen},
 });
 
-AppRegistry.registerComponent('CV', () => CV);
+AppRegistry.registerComponent('CurriculumVitae', () => CurriculumVitae);

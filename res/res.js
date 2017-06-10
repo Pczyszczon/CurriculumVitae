@@ -15,8 +15,8 @@ module.exports = {
     dep: 'Wydział Fizyki i Astronomii',
     field: 'Informatyka Stosowana i Systemy Pomiarowe'},
   SKILLS: {
-    know: 'Python, C z elementami C++',
-    basic: 'HTML5, JavaScript, jQuery, CSS, SFML, React-Native',
+    know: 'Python, C++, React-Native',
+    basic: 'HTML5, JavaScript, jQuery, CSS, SFML',
     rlybasic: 'Scrum, git VC',
     rest: 'Angielski B2'},
   EXPERIENCE: {
@@ -25,6 +25,7 @@ module.exports = {
     wda2: '2015',
     w2: 'Korepetytor z Matematyki',
     wda3: '2015',
-    w3: 'Wakacyjna Praca w Księgarnii',
-  }
+    w3: 'Wakacyjna Praca w Księgarnii'},
+  GITHUB: {
+    url: 'https://github.com/Pczyszczon'},
 };

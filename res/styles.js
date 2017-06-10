@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     width: undefined,
     height: undefined,
     backgroundColor:'transparent',
-    alignItems: 'center',
     flexDirection: 'column',
   },
   header: {
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'sans-serif-thin',
     fontWeight: 'normal',
-    fontSize: 20,
+    fontSize: 16,
     margin: 15,
     borderBottomWidth: 1,
     borderBottomColor: 'white',
@@ -75,6 +74,18 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius:30
+  },
+  GitButton: {
+    backgroundColor: 'white',
+    marginBottom: 30,
+    marginTop: 20,
+    margin: 15,
+    borderRadius:70,
+    width: 70,
+    height: 70,
+    position: 'absolute',
+    right: 140,
+    bottom: 100,
   },
 });
 
