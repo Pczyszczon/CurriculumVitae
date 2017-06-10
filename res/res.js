@@ -6,7 +6,7 @@ module.exports = {
     phone: '796533378',
     mail: 'pawel.czyszczon997@gmail.com',
     street: 'Tadeusza Kościuszki 198/26',
-    city: '50-437 Wrocław}'},
+    city: '50-437 Wrocław'},
   EDUCATION: {
     highDate: '2012-2015',
     high: 'Liceum Ogólnokształcące nr 1 w Legnicy',
