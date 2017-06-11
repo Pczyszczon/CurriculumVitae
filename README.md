@@ -1,8 +1,6 @@
 # CurriculumVitae
 To check progress in app, you need to create react native project, and replace index.android file with that one, download all npm files, and change last line to fit your app name.
 
-After some changes, I'll upload APK file
-
 Icons will not work untill adding:
 
 <code>
