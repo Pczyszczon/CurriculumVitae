@@ -5,20 +5,40 @@ import {StackNavigator} from 'react-navigation';
 import Button from 'apsl-react-native-button'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Communications from 'react-native-communications';
+import PopupDialog from 'react-native-popup-dialog';
+import Egg from 'react-native-egg';
 
 import data from './res/res.js';
 import * as styles from './res/styles.js';
 
 class IntroScreen extends React.Component {
   static navigationOptions = {header: null };
+  constructor(props) {
+        super(props)
+        this.state = {
+            name: data.NAME.name,
+            sname: data.NAME.sname,
+        };
+    }
   render() {
     const {navigate} = this.props.navigation;
     return (
       <Image source={require('./res/BG.png')}
         style={styles.container}>
+        <Egg
+          setps={'TTT'}
+          onCatch={() => {this.popupDialog.show();}}>
           <Text style={styles.header}>
-            {data.NAME.name}{"\n"}{data.NAME.sname}
+            {this.state.name}{"\n"}{this.state.sname}
           </Text>
+        </Egg>
+        <PopupDialog
+    ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+  >
+    <View>
+    <TextInput onChangeText={(text) => this.setState({name: text})}/>
+    </View>
+  </PopupDialog>
           <Text style={styles.currHeader}>
             Curriculum Vitae
           </Text>
@@ -199,13 +219,20 @@ class EducationScreen extends React.Component{
 
 class SettingsScreen extends React.Component{
   static navigationOptions = {title: 'Ustawienia'};
-  render() {
-    return (
-      <View>
-            <Text>Settings under constructions...</Text>
-      </View>
-    );
-  }
+  constructor(props) {
+        super(props)
+        this.state = {
+            name: data.NAME.name,
+            sname: data.NAME.sname,
+        };
+    }
+    render() {
+        return (
+          <View>
+          <TextInput onChangeText={(text) => this.setState({name: text})}/>
+           </View>
+        )
+    }
 }
 
 const CurriculumVitae = StackNavigator({
