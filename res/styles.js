@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   menuButtons: {
     backgroundColor: 'white',
     marginBottom: 30,
-    marginTop: 20,
+    marginTop: 30,
     margin: 15,
   },
   textM: {
@@ -66,15 +66,6 @@ const styles = StyleSheet.create({
     height: undefined,
     backgroundColor: '#2f4f4f',
   },
-  settingsButton:{
-    position: 'absolute',
-    right: 20,
-    bottom: 20,
-    backgroundColor: 'white',
-    width: 50,
-    height: 50,
-    borderRadius:30
-  },
   GitButton: {
     backgroundColor: 'white',
     marginBottom: 30,
@@ -86,6 +77,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 140,
     bottom: 100,
+  },
+  cv: {
+    margin: 5,
+    fontSize: 15,
+    fontFamily: 'sans-serif-thin',
+    fontWeight: 'bold',
   },
 });
 

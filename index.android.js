@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, {Component,PropTypes} from 'react';
 import {AppRegistry,Text,View,Image,TextInput,
-        WebView, Linking} from 'react-native';
+        WebView,Linking} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import Button from 'apsl-react-native-button'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Communications from 'react-native-communications';
-import PopupDialog from 'react-native-popup-dialog';
+import PopupDialog ,{SlideAnimation} from 'react-native-popup-dialog';
 import Egg from 'react-native-egg';
 
 import data from './res/res.js';
@@ -13,39 +13,33 @@ import * as styles from './res/styles.js';
 
 class IntroScreen extends React.Component {
   static navigationOptions = {header: null };
-  constructor(props) {
-        super(props)
-        this.state = {
-            name: data.NAME.name,
-            sname: data.NAME.sname,
-        };
-    }
   render() {
     const {navigate} = this.props.navigation;
     return (
       <Image source={require('./res/BG.png')}
         style={styles.container}>
+          <Text style={styles.header}>
+            {data.NAME.name}{"\n"}{data.NAME.sname}
+          </Text>
         <Egg
           setps={'TTT'}
           onCatch={() => {this.popupDialog.show();}}>
-          <Text style={styles.header}>
-            {this.state.name}{"\n"}{this.state.sname}
-          </Text>
-        </Egg>
-        <PopupDialog
-    ref={(popupDialog) => { this.popupDialog = popupDialog; }}
-  >
-    <View>
-    <TextInput onChangeText={(text) => this.setState({name: text})}/>
-    </View>
-  </PopupDialog>
-          <Text style={styles.currHeader}>
-            Curriculum Vitae
-          </Text>
-          <Button onPress={() => navigate('Main')}
-            style={styles.startButton}>
-            <Text style={styles.textM}><Icon name="bank" size={25}/> Start</Text>
-          </Button>
+            <Text style={styles.currHeader}>
+              Curriculum Vitae
+            </Text>
+          </Egg>
+          <PopupDialog
+            height={100}
+            dialogAnimation = { new SlideAnimation({ slideFrom: 'bottom' }) }
+            ref={(popupDialog) => { this.popupDialog = popupDialog; }}>
+            <View>
+              <Text style={styles.cv}>{data.KLAUZURA.cv}</Text>
+            </View>
+          </PopupDialog>
+            <Button onPress={() => navigate('Main')}
+              style={styles.startButton}>
+              <Text style={styles.textM}><Icon name="bank" size={25}/> Start</Text>
+            </Button>
       </Image>
     );
   }
@@ -84,11 +78,6 @@ class MainScreen extends React.Component {
         style={styles.menuButtons}>
         <Text style={styles.textM}> <Icon name="github" size={25}/> Github</Text>
       </Button>
-      <Button
-        onPress={() => navigate('Sett')}
-        style={styles.settingsButton}>
-        <Text><Icon name="cogs" size={35}/></Text>
-      </Button>
       </Image>
     );
   }
@@ -101,12 +90,16 @@ class DataScreen extends React.Component{
         <Image
          source={require('./res/BG.png')}
          style={styles.MenuContainer}>
+         <Egg
+           setps={'TTT'}
+           onCatch={() => {this.popupDialog.show();}}>
           <Text style={styles.textH}>
             Telefon
             <Text style={styles.textD}>
               {"\n"}{data.PERSONAL.phone}
             </Text>
           </Text>
+          </Egg>
           <Text style={styles.textH}>
             Mail
             <Text style={styles.textD}>
@@ -217,24 +210,6 @@ class EducationScreen extends React.Component{
     }
   }
 
-class SettingsScreen extends React.Component{
-  static navigationOptions = {title: 'Ustawienia'};
-  constructor(props) {
-        super(props)
-        this.state = {
-            name: data.NAME.name,
-            sname: data.NAME.sname,
-        };
-    }
-    render() {
-        return (
-          <View>
-          <TextInput onChangeText={(text) => this.setState({name: text})}/>
-           </View>
-        )
-    }
-}
-
 const CurriculumVitae = StackNavigator({
   Intro: {screen: IntroScreen},
   Main: {screen: MainScreen},
@@ -242,7 +217,6 @@ const CurriculumVitae = StackNavigator({
   Data: {screen: DataScreen},
   Edu: {screen: EducationScreen},
   Exp: {screen: ExperienceScreen},
-  Sett: {screen: SettingsScreen},
 });
 
 AppRegistry.registerComponent('CurriculumVitae', () => CurriculumVitae);
